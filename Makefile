@@ -8,6 +8,7 @@ site.iso: $(DRIVERS) isodir/noraboot isodir/nora isodir/boot/grub/grub.cfg isodi
 	grub-mkrescue -o $@ isodir \
 		--locales= \
 		--fonts= \
+		--themes= \
 		--install-modules="multiboot2 normal" \
 		--modules= \
 		--compress=xz
@@ -22,11 +23,11 @@ site.bin: index.md design.md roadmap.md
 	mcopy -i $@ roadmap.html ::roadmap
 
 isodir/noraboot: | isodir
-	cd $(NOROST_DIR) && ./mkboot.sh
+	cd $(NOROST_DIR) && ./mkboot.sh --release
 	cp $(NOROST_DIR)/target/i686-unknown-none-norostbkernel/release/$(patsubst isodir/%,%,$@) $@
 
 isodir/nora: | isodir
-	cd $(NOROST_DIR) && ./mkkernel.sh
+	cd $(NOROST_DIR) && ./mkkernel.sh --release
 	cp $(NOROST_DIR)/target/x86_64-unknown-none-norostbkernel/release/$(patsubst isodir/%,%,$@) $@
 
 isodir/site.bin isodir/init.toml: isodir/%: %
@@ -37,7 +38,7 @@ isodir/boot/grub/grub.cfg: grub.cfg
 	cp $< $@
 
 $(DRIVERS): | isodir
-	cd $(NOROST_DIR) && ./mkiso.sh
+	cd $(NOROST_DIR) && ./mkiso.sh --release
 	cp $(NOROST_DIR)/target/x86_64-unknown-norostb/release/$(patsubst isodir/%,%,$@) $@
 
 isodir:
