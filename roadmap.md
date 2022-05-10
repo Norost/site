@@ -10,6 +10,7 @@
 - Implement SSH or similar
 - Enable pre-emption
 - Port a proper HTTP server, i.e. one that is asynchronous
+- Secure kernel against malicious userspace programs
 
 ## v0.1
 

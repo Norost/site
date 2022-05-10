@@ -13,7 +13,7 @@ portability & scaling.
   - Any process can create new objects.
   - IPC is performed via tables, which are also objects.
   - Processes can only perform operations on objects they have a handle to.
-- Preemtable kernel & userland
+- Preemptable kernel & userland
 - Supported devices:
   - virtio-net
   - virtio-blk
