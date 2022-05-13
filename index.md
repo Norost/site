@@ -30,6 +30,20 @@ portability & scaling.
 ## [Roadmap](roadmap)
 
 
+## Tested hardware & emulators
+
+### Emulators
+
+- QEMU 6.2.50
+- Bochs 2.7
+
+### Hardware
+
+- HP EliteBook Folio 1040 G2
+  - **Note:** you will need to enable **Legacy Boot** in order to use the VGA
+    text console.
+
+
 ## Source code repositories
 
 - [Source Hut](https://git.sr.ht/~demindiro/norost-b)
