@@ -1,3 +1,7 @@
+stdin = "uart/0"
+stdout = "uart/0"
+stderr = "uart/0"
+
 [program.fs_fat]
 path = "fs-fat"
 args = [ "site", "drivers/site.bin" ]
