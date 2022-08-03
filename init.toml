@@ -1,21 +1,19 @@
 stdin = "uart/0"
-stdout = "uart/0"
-stderr = "uart/0"
+stdout = "system/log"
+stderr = "system/log"
 
-[program.fs_fat]
-path = "fs-fat"
-args = [ "site", "drivers/site.bin" ]
-target = "site"
+[program.minish]
+path = "minish"
 file_root = ""
 
 [program.virtio_net]
-path = "virtio-net"
+path = "virtio_net"
 args = [ "net" ]
 target = "net"
 file_root = ""
 
 [program.static_http_server]
 path = "static_http_server"
-after = [ "site", "net" ]
-file_root = "site"
+after = [ "drivers", "net" ]
+file_root = "drivers"
 net_root = "net"

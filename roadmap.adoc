@@ -1,0 +1,66 @@
+= Roadmap
+
+:nofooter:
+
+== v0.3
+
+_TODO_
+
+== v0.2
+
+* &check; Finalize OO interface, i.e. add missing methods.
+** It won't be the final revision of the interface: more specific methods that have
+higher performance may still be added.
+Rather, the basic methods to make the kernel fully functional will be added.
+
+* &check; Improve virtio-net.
++
+--
+** Avoid busy-polling, this will require a way to get the kernel's monotonic time.
+** Queue multiple packets at once
+** Add a crate that provides a easier & safe wrapper around the raw queue structure
+--
++
+CAUTION: It is still very unstable and tends to unexpectedly break.
+
+* &check; Implement SSH or similar
+** This will make the OS more practical as a web server.
+
+* &cross; Port a proper HTTP server, i.e. one that is asynchronous
++
+NOTE: Async Rust lacks proper abstractions to make programs runtime agnostic.
+Instead, the existing HTTP server stub was improved to take advantage of the Norost-specific
+`async_std` (which is *distinct* from the one on https://crates.io) library.
+
+* &cross; Secure kernel against malicious userspace programs
++
+--
+** Aside from obviously being a requirement, it'll also make it easier to debug programs
+that may be causing UB.
+--
++
+NOTE: This is postponed as properly securing against malicious userspace applications without
+sacrificing too much performance is a difficult topic and should be done right from the get-go.
+
+* &check;/&cross; Move PS/2 keyboard driver and VGA text driver out of the kernel.
+
+** The PS/2 8042 driver itself will still remain in the kernel as the alternative requires
+exporting the entire I/O space, which gives way too much power to userland.
++
+NOTE: In the end entire PS/2 driver was moved to userspace to simplify things and keep the kernel
+leaner.
+
+** Similarly, a few parts of the VGA text driver will remain in the kernel. A userland
+driver will mainly deal with figuring out where characters should go, scroll etc.
++
+NOTE: The VGA driver will remain in the kernel until a proper syslog solution is impemented.
+
+* &check; Implement a GUI
+** This includes a tiling window manager. Windows will be represented as leaves in a binary
+tree, much like https://github.com/baskerville/bspwm[bspwm].
+** The protocol will be pixel-based to keep it simple & flexible.
+** The first GUI application will be a terminal.
+
+== v0.1
+
+- Make the OS useable for hosting this website :)

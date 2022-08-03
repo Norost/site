@@ -1,0 +1,7 @@
+= Gallery
+
+:nofooter:
+
+image:img/v0.1-hp-elitebook-folio-1040-g2.jpg[v0.1 on a HP EliteBook Folio 1040 G2]
+
+image:img/v0.1-site.png[v0.1 hosting this site]
