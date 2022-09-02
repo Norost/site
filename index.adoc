@@ -88,10 +88,7 @@ Most drivers are outside the kernel, which makes it easier to replace and/or stu
 === Hardware
 
 - HP EliteBook Folio 1040 G2
-+
-NOTE: You will need to enable *UEFI with CSM* to use the GUI.
-+
-NOTE: You will need to enable *Legacy Boot* to use the VGA text console.
+- Samsung NP530U3C
 
 == link:design[Design]
 

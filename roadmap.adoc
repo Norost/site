@@ -4,7 +4,38 @@
 
 == v0.3
 
-_TODO_
+The goal of this release is to make the OS useful as a daily driver.
+
+=== Drivers
+
+* &check; Add xHCI (USB) support
+** &check; Add USB keyboard driver
+** &check; Add USB mass storage driver
+* Add ATA support
+* Add Intel WiFi support
+* &check; Support UEFI GOP or Multiboot2 framebuffer.
+** Writing a driver for every GPU takes too much time and doesn't cover new GPUs.
+   Supporting the bootloader's framebuffer will cover all GPUs, both old and new.
+
+=== Init
+
+* &check; Create separate loader for PCI and USB device drivers, as the base init is becoming unwieldy.
+* Add syslog to kernel and move VGA & UART drivers to userspace.
+
+=== UI
+
+* Add title bars to windows
+* Implement cursor
+* Allow resizing and moving windows
+* Port or create basic text editor
+
+=== Other
+
+* Design & implement a custom filesystem with a focus on error detection and deduplication.
+* &check; User manager / database.
+* Intercept / custom syscalls.
+** This is useful to run binaries of other OSes as well as change the syscall API while
+   still allowing old programs to be run.
 
 == v0.2
 
@@ -63,4 +94,4 @@ tree, much like https://github.com/baskerville/bspwm[bspwm].
 
 == v0.1
 
-- Make the OS useable for hosting this website :)
+- &check; Make the OS useable for hosting this website :)

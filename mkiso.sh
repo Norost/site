@@ -23,24 +23,29 @@ cp target/$TARGET_KERNEL/release/nora $O/boot/nora
 cp target/$TARGET_BOOT/release/noraboot $O/boot/noraboot
 cp boot/$ARCH/grub/grub.cfg $O/boot/grub/grub.cfg
 
+./mkiso.sh --release
+
 install () {
-	(cd $1/$2 && cargo build $args --target $TARGET_USER)
-	cp target/$TARGET_USER/release/$3 $A/$2
+	cp target/$TARGET_USER/release/$2 $A/$1
 }
 
-install drivers virtio_net         driver_virtio_net
-install base    init               init
-install base    minish             minish
-install base    static_http_server static_http_server
+install pci                driver_pci
+install virtio_net         driver_virtio_net
+install init               init
+install minish             minish
+install static_http_server static_http_server
+
+cp pci.scf $A/pci.scf
 
 popd
+
+cp init.scf $A/init.scf
 
 ./generate.sh
 for f in index gallery design roadmap
 do
 	cp $f.html $A/$f
 done
-cp init.toml $A/init.toml
 mkdir $A/img
 cp img/* $A/img/
 

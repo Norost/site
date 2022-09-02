@@ -1,0 +1,17 @@
+(programs
+	(minish
+		(objects
+			(file "")
+			(in uart/0)))
+	(static_http_server
+		(after net)
+		(objects
+			(out system/log)
+			(file drivers)
+			(net net)))
+	(pci
+		(objects
+			(file "")
+			(pci pci)
+			(cfg drivers/pci.scf)
+			(process process))))
